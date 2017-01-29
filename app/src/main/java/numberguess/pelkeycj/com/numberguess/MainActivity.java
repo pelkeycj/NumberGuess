@@ -10,7 +10,6 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    Random ran = new Random();
     int targetNumber;
 
     @Override
@@ -25,22 +24,30 @@ public class MainActivity extends AppCompatActivity {
         EditText guess = (EditText) findViewById(R.id.guessEdit);
         int guessNum = Integer.parseInt(guess.getText().toString()); // users guessed num
 
+        // clear text
+        guess.setText("");
+
         Log.i("INFO", "Guess=" + guessNum);
 
         if (guessNum == this.targetNumber) {
-            Toast.makeText(this, "Correct! Try again.", Toast.LENGTH_SHORT).show();
+            this.giveFeedback("Correct! Try again.");
             setTargetNumber();
         }
         else if (guessNum < this.targetNumber) {
-            Toast.makeText(this, "Higher", Toast.LENGTH_SHORT).show();
+            this.giveFeedback("Higher");
         }
         else {
-            Toast.makeText(this, "Lower", Toast.LENGTH_SHORT).show();
+            this.giveFeedback("Lower");
         }
 
     }
 
+    public void giveFeedback(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
     public void setTargetNumber() {
+        Random ran = new Random();
         this.targetNumber = ran.nextInt(20) + 1;
         Log.i("INFO", "Target=" + this.targetNumber);
     }
