@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NumberGuess</string>
+    <string name="prompt">Can you guess it?</string>
+    <string name="number_top">I\'m thinking of a number between 1 and 20.</string>
+    <string name="guess_button_text">Guess</string>
+    <string name="text_hint">Enter number</string>
+</resources>
